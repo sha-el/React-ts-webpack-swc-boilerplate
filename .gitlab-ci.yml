@@ -1,0 +1,15 @@
+stages:
+  - static_analysis
+
+lint_and_build:
+  stage: static_analysis
+  image: node:10
+  before_script:
+    - yarn install
+  script:
+    - yarn lint
+    - yarn build
+  cache:
+    key: merovingian_ts
+    paths:
+      - view/node_modules
